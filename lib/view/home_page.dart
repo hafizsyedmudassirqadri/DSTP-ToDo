@@ -15,48 +15,71 @@ class HomePageUi extends StatefulWidget {
 
 class _HomePageUiState extends State<HomePageUi> {
   final List<TaskModel> listTask = [
-    TaskModel(
-      title: "Flutter Work",
-      datetime: DateTime(2024, 11, 9, 12, 34),
-      description: "Do it Now",
-    ),
-    TaskModel(
-      title: "Do Something",
-      datetime: DateTime(2024, 11, 9, 9, 45),
-      description: "Do it Now",
-    ),
-    TaskModel(
-      title: "Playing Cricket",
-      datetime: DateTime(2024, 11, 9, 4, 14),
-      description: "Do it Now",
-    ),
+    // TaskModel(
+    //   title: "Flutter Work",
+    //   datetime: DateTime(2024, 11, 9, 12, 34),
+    //   description: "Do it Now",
+    // ),
+    // TaskModel(
+    //   title: "Do Something",
+    //   datetime: DateTime(2024, 11, 9, 9, 45),
+    //   description: "Do it Now",
+    // ),
+    // TaskModel(
+    //   title: "Playing Cricket",
+    //   datetime: DateTime(2024, 11, 9, 4, 14),
+    //   description: "Do it Now",
+    // ),
   ];
 
   bool isTaskCompleted = false;
 
-  Future<void> convertTaskModelToString() async {
+  Future<void> saveTaskList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var mapListTask = listTask.map((e) => e.toMap()).toList();
+    List<String> jsonStringList = mapListTask
+        .map((i) => jsonEncode(i))
+        .toList();
 
-    TaskModel myTask = TaskModel(
-      title: "Write Something",
-      datetime: DateTime(2024, 5, 11),
-      description: "like abcd",
-    );
-    Map<String, dynamic> newMapTask = myTask.toMap();
-    var newJsonTask = jsonEncode(newMapTask);
-    await prefs.setString('task', newJsonTask);
+    await prefs.setStringList("TaskList", jsonStringList);
   }
 
-  Future<void> convertStringToTaskModel() async {
+  Future<void> retrieveTaskList() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    String jsonString = prefs.getString("task") ?? "";
-    var mapTaskModel = jsonDecode(jsonString);
-    TaskModel.fromMap(mapTaskModel);
-    // print(taskFromMap.title);
-    // print(taskFromMap.description);
-    // print(taskFromMap.isChecked);
-    // print(taskFromMap.taskDate);
+    List<String> jsonStringList = prefs.getStringList("TaskList") ?? [];
+    var mapListTask = jsonStringList.map((e) => jsonDecode(e)).toList();
+    listTask.addAll(mapListTask.map((e) => TaskModel.fromMap(e)).toList());
+    setState(() {});
   }
+
+  @override
+  void initState() {
+    retrieveTaskList();
+    super.initState();
+  }
+  // Future<void> convertTaskModelToString() async {
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  //   TaskModel myTask = TaskModel(
+  //     title: "Write Something",
+  //     datetime: DateTime(2024, 5, 11),
+  //     description: "like abcd",
+  //   );
+  //   Map<String, dynamic> newMapTask = myTask.toMap();
+  //   var newJsonTask = jsonEncode(newMapTask);
+  //   await prefs.setString('task', newJsonTask);
+  // }
+
+  // Future<void> convertStringToTaskModel() async {
+  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //   String jsonString = prefs.getString("task") ?? "";
+  //   var mapTaskModel = jsonDecode(jsonString);
+  //   TaskModel.fromMap(mapTaskModel);
+  //   // print(taskFromMap.title);
+  //   // print(taskFromMap.description);
+  //   // print(taskFromMap.isChecked);
+  //   // print(taskFromMap.taskDate);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -313,6 +336,7 @@ class _HomePageUiState extends State<HomePageUi> {
                                         ),
                                       ),
                                     );
+                                    saveTaskList();
                                     Navigator.pop(context);
                                   }
                                   setState(() {});
@@ -342,10 +366,6 @@ class _HomePageUiState extends State<HomePageUi> {
       ),
 
       appBar: AppBar(
-        actions: [
-          IconButton(onPressed: convertTaskModelToString, icon: Icon(Icons.get_app,
-          color: Colors.white,))
-        ],
         backgroundColor: AppColors.appbarColor,
         title: Text(
           "DSTP-ToDo",
@@ -356,14 +376,7 @@ class _HomePageUiState extends State<HomePageUi> {
           ),
         ),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: convertStringToTaskModel,
-          icon: Icon(
-            Icons.arrow_back,
-            color: AppColors.primaryBtnTextColor,
-            size: 27,
-          ),
-        ),
+      
       ),
       body: Container(
         color: AppColors.bgColor,
@@ -413,6 +426,7 @@ class _HomePageUiState extends State<HomePageUi> {
                           value: singleTask.isChecked,
                           onChanged: (isCheckedFlag) {
                             singleTask.isChecked = isCheckedFlag!;
+                            saveTaskList();
                             setState(() {});
                           },
                         ),
