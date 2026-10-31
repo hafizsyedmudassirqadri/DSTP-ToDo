@@ -444,7 +444,7 @@ class _HomePageUiState extends State<HomePageUi> {
                           radius: 30,
                           child: CircleAvatar(
                             backgroundImage: AssetImage(
-                              "assets/images/profile1.jpg",
+                              "assets/images/mypic.png",
                             ),
                             backgroundColor: Colors.blueAccent,
                             radius: 26,
