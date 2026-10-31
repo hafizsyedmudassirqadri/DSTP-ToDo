@@ -1,17 +1,52 @@
-# to_do_app
+# Flutter To-Do App 📝
 
-A new Flutter project.
+A simple and user-friendly To-Do application built with **Flutter and Dart**. This app includes Login, Home, and Profile pages, with SharedPreferences for storing data locally.
 
-## Getting Started
+## 🚀 Features
 
-This project is a starting point for a Flutter application.
+- 🔐 Login Page
+- 🏠 Home Page
+- 👤 Profile Page
+- 💾 Local Data Storage using SharedPreferences
+- 📱 Simple and Clean UI
+- 🔄 Page Navigation
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Technologies Used
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- Flutter
+- Dart
+- SharedPreferences
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📂 Project Purpose
+
+This project was created to improve my Flutter development skills and practice UI design, navigation, and local data storage using SharedPreferences.
+
+## ⚙️ Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/hafizsyedmudassirqadri/DSTP-ToDo.git
+   ```
+
+2. Navigate to the project folder:
+
+   ```bash
+   cd to_do_app
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+
+4. Run the application:
+
+   ```bash
+   flutter run
+   ```
+
+## 👨‍💻 Developer
+
+Created with ❤️ using Flutter & Dart.
