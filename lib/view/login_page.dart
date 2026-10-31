@@ -230,7 +230,7 @@ class _LoginScreenUiState extends State<LoginScreenUi> {
                     setState(() {});
                     await Future.delayed(Duration(seconds: 2));
 
-                    Navigator.push(
+                    Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
                         builder: (context) => const DashboradScreenUi(),
@@ -272,7 +272,7 @@ class _LoginScreenUiState extends State<LoginScreenUi> {
                         ),
                 ),
               ),
-              SizedBox(height: sh * 0.02),
+              SizedBox(height: sh * 0.007),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

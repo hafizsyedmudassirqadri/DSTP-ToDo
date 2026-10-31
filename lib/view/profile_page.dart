@@ -9,7 +9,7 @@ class ProfileScreenUi extends StatefulWidget {
 }
 
 class _ProfileScreenUiState extends State<ProfileScreenUi> {
-  String name = "Ubaid Baig";
+  
   @override
   Widget build(BuildContext context) {
     // print(name.split(" "));
@@ -228,7 +228,7 @@ class _ProfileScreenUiState extends State<ProfileScreenUi> {
                     ],
                   ),
                   Divider(color: AppColors.secondaryText, thickness: 2.0),
-                  SizedBox(height: screenh * 0.001),
+                  SizedBox(height: screenh * 0.002),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -257,7 +257,7 @@ class _ProfileScreenUiState extends State<ProfileScreenUi> {
                     ],
                   ),
                   Divider(color: AppColors.secondaryText, thickness: 2.0),
-                  SizedBox(height: screenh * 0.001),
+                  SizedBox(height: screenh * 0.002),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -310,7 +310,7 @@ class _ProfileScreenUiState extends State<ProfileScreenUi> {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  SizedBox(height: screenh * 0.001),
+                  SizedBox(height: screenh * 0.002),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -335,7 +335,7 @@ class _ProfileScreenUiState extends State<ProfileScreenUi> {
                       ),
                     ],
                   ),
-                  SizedBox(height: screenh * 0.001),
+                  SizedBox(height: screenh * 0.002),
                   Row(
                     children: [
                       Icon(
@@ -357,11 +357,11 @@ class _ProfileScreenUiState extends State<ProfileScreenUi> {
                       ),
                     ],
                   ),
-                  SizedBox(height: screenh * 0.001),
+                  SizedBox(height: screenh * 0.002),
                 ],
               ),
             ),
-            SizedBox(height: screenh * 0.07),
+            SizedBox(height: screenh * 0.02),
           ],
         ),
       ),
